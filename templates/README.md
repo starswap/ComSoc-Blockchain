@@ -1,0 +1,1 @@
+A Blockchain implementation to be used to issue NFT certificates at computing society.
