@@ -1,5 +1,7 @@
 import time
 import hashlib
+from flask import Markup
+COLORS = ["red","lime","yellow","white","orange","cyan"]
 class Blockchain():
   def __init__(self,genesisBlock,difficulty):
     self.chain = []
@@ -42,9 +44,8 @@ class Block():
     return True
   def validate(self,difficulty):
     return self.getHash()[:difficulty] == "0"*difficulty
-
-start = time.time()
-JamesCoin = Blockchain(Block("James is the genesis"),3)
-JamesCoin.mineBlock(Block("Santosh is the most intriguing geographer"))
-end = time.time()
-print("Total time in seconds : " + str(end-start))
+  def outputHtml(self,index):
+    escaped = self.textContent.replace("<","&lt;").replace(">","&gt;")
+    print("")
+    print(index)
+    return Markup("<div class='block' style='background-color:"+COLORS[index]+"'><div class='blockContents blockNumber'>Block Number: "+ str(index) + "</div><div class='blockContents blockContent'>" + escaped + "</div><div class='blockContents blockNonce'>Nonce value:" + str(self.nonce) + "</div><div class='blockContents blockHash'>Hash of block: " + str(self.hash) + "</div><div class='blockContents blockPrevious'>Hash of previous: " + str(self.hashOfPreviousBlock) + "</div><div class='blockContents blockTimestamp'>Timestamp: " + str(self.timestamp) + "</div></div>")

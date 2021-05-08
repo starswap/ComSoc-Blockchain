@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>ComSoc Blockchain viewer</title>
+    <style>
+      .block {
+        border-radius: 5px;
+        border-width: 2px;
+        border-style: solid;  
+        width: 250px;     
+        height: 350px; 
+        display: inline-block;
+        margin-left: 25px;
+        margin-right: 25px;
+        vertical-align: top;
+        word-wrap: break-word;
+      }
+      div .blockContents {
+        border-width: 2px;
+        border-style: solid;
+      }
+    </style>
+	</head>
+	<body>
+    {% for i,block in enumChain %}
+    {{block.outputHtml(i)}}
+    {% endfor %}
+
+	</body>
+</html>
